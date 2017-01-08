@@ -140,7 +140,8 @@ void spi_frequency(spi_t *obj, int hz) {
         int prescale_hz = PCLK / prescaler;
         
         // calculate the divider
-        int divider = floor(((float)prescale_hz / (float)hz) + 0.5f);
+        //int divider = floor(((float)prescale_hz / (float)hz) + 0.5f);
+        int divider = (prescale_hz + (hz / 2)) / hz;
         
         // check we can support the divider
         if (divider < 256) {
