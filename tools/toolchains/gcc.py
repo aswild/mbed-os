@@ -244,7 +244,9 @@ class GCC(mbedToolchain):
             param = objects
 
         # Exec command
-        self.default_cmd([self.ar, 'rcs', lib_path] + param)
+        cmd = [self.ar, 'rcs', lib_path] + param
+        self.cc_verbose("Archive: %s" % ' '.join(cmd))
+        self.default_cmd(cmd)
 
     @hook_tool
     def binary(self, resources, elf, bin):
