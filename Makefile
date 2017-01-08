@@ -59,6 +59,9 @@ PARALLEL_MAKE = $(filter -j%,$(MAKEFLAGS))
 all: build
 build:
 	$(PYTHON) $(BUILD_SCRIPT) $(PARALLEL_MAKE) $(BUILDOPTS) -m $(TARGET) -t $(TOOLCHAIN)
+	cp -f $(BUILD_OUTPUT_DIR)/.temp/TARGET_$(shell echo "$(TARGET)" | sed 's/,.*//')/TOOLCHAIN_GCC_ARM/mbed_config.h \
+	   $(BUILD_OUTPUT_DIR)/mbed_config.h
+	sed -i 's/#define MBED_H/&\n\n#include "mbed_config.h"/' $(BUILD_OUTPUT_DIR)/mbed.h
 
 install:
 	install -d $(DESTDIR)
