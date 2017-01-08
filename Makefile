@@ -21,7 +21,7 @@ DEFAULT_PYTHON      := python
 DEFAULT_DESTDIR     := /usr/src/mbed
 
 BUILD_SCRIPT        := tools/build.py
-BUILD_OUTPUT_DIR    := $(PWD)/.build/mbed
+BUILD_OUTPUT_DIR    := $(PWD)/BUILD/mbed
 
 # Option Processing
 ifeq ($(BUILDOPTS),)
